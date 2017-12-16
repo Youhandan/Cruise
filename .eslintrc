@@ -1,0 +1,102 @@
+{
+  "extends": "eslint:recommended",
+  "env": {
+    "es6": true,
+    "browser": true,
+    "node": true,
+    "mocha": true
+  },
+  "parser": "babel-eslint",
+  "plugins": [
+    "react"
+  ],
+  "ecmaFeatures": {
+    "arrowFunctions": true,
+    "destructuring": true,
+    "defaultParams": true,
+    "jsx": true
+  },
+  "rules": {
+    "comma-spacing": [
+      2,
+      {
+        "before": false,
+        "after": true
+      }
+    ],
+    "space-before-keywords": 2,
+    "space-after-keywords": 2,
+    "space-before-blocks": 2,
+    "arrow-spacing": 2,
+    "space-infix-ops": 2,
+    "no-console": 2,
+    "no-var": 2,
+    "semi": [
+      2,
+      "never"
+    ],
+    "quotes": [
+      2,
+      "single"
+    ],
+    "jsx-quotes": [
+      2,
+      "prefer-single"
+    ],
+    "react/jsx-boolean-value": 0,
+    "react/jsx-max-props-per-line": [
+      2,
+      {
+        "maximum": 3
+      }
+    ],
+    "react/jsx-no-duplicate-props": 2,
+    "react/jsx-no-undef": 2,
+    "react/jsx-no-bind": 0,
+    "react/jsx-uses-react": 2,
+    "react/jsx-uses-vars": 2,
+    "react/no-danger": 0,
+    "react/no-did-update-set-state": 2,
+    "react/no-multi-comp": 0,
+    "react/jsx-equals-spacing": 2,
+    "react/jsx-curly-spacing": 2,
+    "react/jsx-handler-names": 0,
+    "react/no-unknown-property": 2,
+    "react/jsx-closing-bracket-location": 2,
+    "react/jsx-indent-props": [
+      2,
+      2
+    ],
+    "react/jsx-indent": [
+      2,
+      2
+    ],
+    "react/prop-types": [
+      2,
+      {
+        "ignore": ["className", "style"]
+      }
+    ],
+    "react/react-in-jsx-scope": 2,
+    "react/require-extension": 2,
+    "react/self-closing-comp": 2,
+    "react/sort-comp": [
+      2,
+      {
+        "order": [
+          "static-methods",
+          "lifecycle",
+          "/^(get|set|is|has).+$/",
+          "/^(handle).+$/",
+          "render",
+          "/^(render).+$/",
+          "everything-else"
+        ]
+      }
+    ],
+    "react/wrap-multilines": 2,
+    "react/jsx-sort-prop-types": 0,
+    "react/jsx-sort-props": 0,
+    "react/no-did-mount-set-state": 0
+  }
+}
