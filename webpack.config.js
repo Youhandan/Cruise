@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const path =require('path')
 
 const config = {
     entry:{
@@ -22,6 +23,14 @@ const config = {
         port: 8080,
         hot: true
     },
+
+  resolve: {
+    modules: ["node_modules"],
+    alias: {
+      components: path.resolve(__dirname, 'src/components/')
+    },
+    extensions: ["*", ".js"]
+  },
 
     module: {
         rules: [{
