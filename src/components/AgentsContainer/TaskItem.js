@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Segment, Item, Icon, List, Label } from 'semantic-ui-react'
-import { map, filter } from 'lodash'
+import { Segment, Item, Icon, List, Label, Input, Button, Popup } from 'semantic-ui-react'
+import { map, filter, split } from 'lodash'
 import './TaskItem.less'
 
 export default class TaskItem extends React.Component {
@@ -11,7 +11,8 @@ export default class TaskItem extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      resources: props.task.resources
+      resources: props.task.resources,
+      isOpenAddResourcePopUp: false
     }
   }
 
@@ -20,6 +21,21 @@ export default class TaskItem extends React.Component {
     const remainResource = filter(this.state.resources, (resource) => resource !== content)
     this.setState({
       resources: remainResource
+    })
+  }
+
+  handleAddResource = () => {
+    const inputValue = this.refs.resources.inputRef.value
+    const resources = split(inputValue, ',')
+    this.setState({
+      resources: [...this.state.resources, ...resources],
+      isOpenAddResourcePopUp: false
+    })
+  }
+
+  handleToggleAddResourcePopUp = () => {
+    this.setState({
+      isOpenAddResourcePopUp: !this.state.isOpenAddResourcePopUp
     })
   }
 
@@ -68,8 +84,30 @@ export default class TaskItem extends React.Component {
     return (
       <span>
         <Icon name='plus'/>
-        <a>Specify Resources</a>
+        <Popup
+          open={this.state.isOpenAddResourcePopUp}
+          onClose={this.handleToggleAddResourcePopUp}
+          onOpen={this.handleToggleAddResourcePopUp}
+          wide='very'
+          position='bottom center'
+          trigger={<a>Specify Resources</a>}
+          content={this.renderAddResourcesPopUp()}
+          on='click'
+        />
       </span>
+    )
+  }
+
+  renderAddResourcesPopUp() {
+    return (
+      <div>
+        <p>(separate multiple resources name with commas)</p>
+        <Input fluid ref='resources'/>
+        <span>
+          <Button positive onClick={this.handleAddResource}>Add Resources</Button>
+          <Button negative onClick={this.handleToggleAddResourcePopUp}>Cancel</Button>
+        </span>
+      </div>
     )
   }
 
