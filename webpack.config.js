@@ -6,7 +6,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const config = {
     entry:{
         index: __dirname + '/src/index.js',
-        vendor: ['react', 'react-dom', 'lodash']
+        vendor: ['react', 'react-dom', 'lodash', 'semantic-ui-react']
     } ,
     output: {
         path: __dirname + '/build',
@@ -35,12 +35,28 @@ const config = {
                 }
             },
             exclude: /node_modules/
-        },{
+        }, {
             test: /(\.less)$/,
             use: ExtractTextPlugin.extract({
                 fallback: "style-loader",
-                use: ["css-loader", "less-loader"]}),
+                use: ["css-loader", "less-loader"]
+            }),
             exclude: /node_modules/
+        }, {
+            test: /(\.css)$/,
+            use: ExtractTextPlugin.extract({
+                fallback: "style-loader",
+                use: ["css-loader"]
+            }),
+        }, {
+            test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+            use: [
+                {
+                    loader: 'url-loader',
+                    options: {
+                        limit: 999999999
+                    }
+                }],
         }]
     },
 

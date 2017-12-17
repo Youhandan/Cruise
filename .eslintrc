@@ -8,14 +8,18 @@
   },
   "parser": "babel-eslint",
   "plugins": [
-    "react"
+    "react", "import"
   ],
-  "ecmaFeatures": {
-    "arrowFunctions": true,
-    "destructuring": true,
-    "defaultParams": true,
-    "jsx": true
+
+  "parserOptions": {
+    "ecmaFeatures": {
+      "arrowFunctions": true,
+      "destructuring": true,
+      "defaultParams": true,
+      "jsx": true
+    }
   },
+
   "rules": {
     "comma-spacing": [
       2,
@@ -24,8 +28,7 @@
         "after": true
       }
     ],
-    "space-before-keywords": 2,
-    "space-after-keywords": 2,
+    "keyword-spacing": 2,
     "space-before-blocks": 2,
     "arrow-spacing": 2,
     "space-infix-ops": 2,
@@ -78,7 +81,7 @@
       }
     ],
     "react/react-in-jsx-scope": 2,
-    "react/require-extension": 2,
+    "import/extensions": 2,
     "react/self-closing-comp": 2,
     "react/sort-comp": [
       2,
@@ -94,7 +97,7 @@
         ]
       }
     ],
-    "react/wrap-multilines": 2,
+    "react/jsx-wrap-multilines": 2,
     "react/jsx-sort-prop-types": 0,
     "react/jsx-sort-props": 0,
     "react/no-did-mount-set-state": 0
