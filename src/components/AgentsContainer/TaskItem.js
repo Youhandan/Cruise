@@ -1,15 +1,26 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Segment, Item, Icon, List, Label } from 'semantic-ui-react'
-import { map } from 'lodash'
+import { map, filter } from 'lodash'
 import './TaskItem.less'
 
 export default class TaskItem extends React.Component {
   static propTypes = {
-    task: PropTypes.object.isRequired
+    task: PropTypes.object.isRequired,
   }
   constructor(props) {
     super(props)
+    this.state = {
+      resources: props.task.resources
+    }
+  }
+
+  handleRemoveResource = (e, data) => {
+    const { content } = data
+    const remainResource = filter(this.state.resources, (resource) => resource !== content)
+    this.setState({
+      resources: remainResource
+    })
   }
 
   render() {
@@ -63,7 +74,7 @@ export default class TaskItem extends React.Component {
   }
 
   renderResourceLabels() {
-    const resources = map(this.props.task.resources, (resource, index) => this.renderResourceLabel(resource, index))
+    const resources = map(this.state.resources, (resource, index) => this.renderResourceLabel(resource, index))
     return (
       <span>Resources：{resources}</span>
     )
@@ -71,10 +82,13 @@ export default class TaskItem extends React.Component {
 
   renderResourceLabel(resourceName, index) {
     return (
-      <Label key={index} className='resource-label'>
-        {resourceName}
-        <Icon name='delete' />
-      </Label>
+      <Label
+        key={index}
+        content={resourceName}
+        className='resource-label'
+        removeIcon='delete'
+        onRemove={this.handleRemoveResource}
+      />
     )
   }
 
