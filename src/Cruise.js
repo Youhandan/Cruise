@@ -30,7 +30,7 @@ export default class Cruise extends React.Component {
   renderLogInInfo() {
     return (
       <Header as='h5' floated='right'>
-        <span style={{marginRight: '16px'}}>Signed in as <a>Member</a></span>
+        <span style={{marginRight: '2rem'}}>Signed in as <a>Member</a></span>
         <span><Icon link name='arrow right'/><a>Sign out</a></span>
       </Header>
     )
