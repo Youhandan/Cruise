@@ -1,5 +1,5 @@
 import React from 'react'
-import { Segment, Header, Button, Container, Grid } from 'semantic-ui-react'
+import { Segment, Header, Container, Grid } from 'semantic-ui-react'
 import { map } from 'lodash'
 import TasksList from './TasksList'
 import TasksStatus from './TasksStatus'
