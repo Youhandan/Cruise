@@ -26,9 +26,9 @@ export default class TaskItem extends React.Component {
             </Item.Header>
             <Item.Description>
               <TaskItemResources resources={resources}/>
-              {status === 'idle' && this.renderDeny()}
             </Item.Description>
           </Item.Content>
+          {status === 'idle' && this.renderDeny()}
         </Segment>
       </Item>
     )
