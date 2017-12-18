@@ -34,9 +34,9 @@ export default class TasksStatus extends React.Component {
     return (
       <div>
         <Header as='h3' dividing >Summary</Header>
-        <List>{taskStatusListItems}</List>
+        <List verticalAlign='middle' relaxed>{taskStatusListItems}</List>
         <Header as='h3' dividing>History</Header>
-        <List>{taskHistoryListItems}</List>
+        <List verticalAlign='middle' relaxed>{taskHistoryListItems}</List>
       </div>
     )
   }
