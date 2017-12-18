@@ -4,6 +4,7 @@ import { map } from 'lodash'
 import TasksList from './TasksList'
 import TasksStatus from './TasksStatus'
 import {EllipseButtonGroup} from 'components/commons/EllipseButtonGroup'
+import './AgentsContainer.less'
 
 const data = [
     {
@@ -57,7 +58,7 @@ export default class AgentsContainer extends React.Component {
       <Segment inverted color='grey' vertical>
         <Grid stackable>
           <Grid.Column width={2} textAlign='center' verticalAlign='middle'>
-            <Header as='h2' inverted color='grey'>Agents</Header>
+            <Header as='h2' className='pane-header'>Agents</Header>
           </Grid.Column>
           <Grid.Column width={10}>
             <EllipseButtonGroup buttons={['All', 'Physical', 'Virtual']}/>
