@@ -22,10 +22,10 @@ export default class TasksStatus extends React.Component {
     return (
       <div>
         <Header as='h3' dividing >Summary</Header>
-          <p>building {buildingTasks}</p>
-          <p>idle {idleTasks}</p>
+        <p>building {buildingTasks}</p>
+        <p>idle {idleTasks}</p>
         <Header as='h3' dividing>History</Header>
-          <List>{listItem}</List>
+        <List>{listItem}</List>
       </div>
     )
   }

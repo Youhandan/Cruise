@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Icon, List, Label, Input, Button, Popup, Form } from 'semantic-ui-react'
-import { map, filter, split } from 'lodash'
+import { List, Label } from 'semantic-ui-react'
+import { map, filter } from 'lodash'
 import ResourceAddition from './ResourceAddition'
 
 export default class TaskItemResources extends React.Component {

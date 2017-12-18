@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Icon, Input, Button, Popup, Form } from 'semantic-ui-react'
-import { map, filter, split } from 'lodash'
+import { split } from 'lodash'
 
 export default class ResourceAddition extends React.Component {
   static propTypes = {

@@ -1,7 +1,7 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { map } from 'lodash'
 import { Button } from 'semantic-ui-react'
-
 
 export const EllipseButtonGroup = ({buttons}) => {
   const buttonItems = map(buttons, (button, index) => {
@@ -18,9 +18,13 @@ export const EllipseButtonGroup = ({buttons}) => {
   })
   return (
     <div>
-    <Button.Group>
-      {buttonItems}
-    </Button.Group>
-      </div>
+      <Button.Group>
+        {buttonItems}
+      </Button.Group>
+    </div>
   )
+}
+
+EllipseButtonGroup.propTypes = {
+  buttons: PropTypes.array.isRequired
 }

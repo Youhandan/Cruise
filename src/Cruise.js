@@ -1,6 +1,6 @@
 import React from 'react'
 import { Tab, Header, Container, Icon } from 'semantic-ui-react'
-import AgentsContainer from 'components/AgentsContainer/AgentsContainer.js'
+import AgentsContainer from 'components/AgentsContainer/AgentsContainer'
 import './Cruise.less'
 
 export default class Cruise extends React.Component {
@@ -41,7 +41,12 @@ export default class Cruise extends React.Component {
     return (
       <div className='tab-container'>
         <Header as='h1' className='title-header'>Cruise</Header>
-        <Tab panes={panes} renderActiveOnly={false} className='right-tab' defaultActiveIndex={2}/>
+        <Tab
+          panes={panes}
+          renderActiveOnly={false}
+          className='right-tab'
+          defaultActiveIndex={2}
+        />
       </div>
     )
   }

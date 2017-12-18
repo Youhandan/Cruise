@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Segment, Item, Icon, List } from 'semantic-ui-react'
-import { map, filter, split } from 'lodash'
 import TaskItemResources from './TaskItemResources'
 import './TaskItem.less'
 
@@ -39,7 +38,12 @@ export default class TaskItem extends React.Component {
     const { status, ip, path } = this.props.task
     const items = [status.valueOf(), ip.valueOf(), path.valueOf()]
     return (
-      <List divided horizontal className='item-info' items={items}/>
+      <List
+        divided
+        horizontal
+        className='item-info'
+        items={items}
+      />
     )
   }
 
