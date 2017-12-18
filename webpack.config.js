@@ -27,7 +27,8 @@ const config = {
   resolve: {
     modules: ["node_modules"],
     alias: {
-      components: path.resolve(__dirname, 'src/components/')
+      components: path.resolve(__dirname, 'src/components/'),
+      validations: path.resolve(__dirname, 'src/validations/')
     },
     extensions: ["*", ".js"]
   },
