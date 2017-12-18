@@ -70,7 +70,7 @@ export default class AgentsContainer extends React.Component {
   renderContent() {
     const tasksStatus = map(data, (item) => ({status: item.status, name: item.name}))
     return (
-      <Segment vertical>
+      <Segment attached>
         <Grid divided stackable>
           <Grid.Column width={12}>
             <TasksList tasks={data}/>
