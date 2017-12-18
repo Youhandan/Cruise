@@ -7,6 +7,12 @@ describe('AddNewResourceOfTaskValidators', () => {
       const { hasError } = validateAddResource(resource)
       expect(hasError).to.eql(true)
     })
+
+    it('add resource should not be empty', () => {
+      const resource = ['']
+      const { hasError } = validateAddResource(resource)
+      expect(hasError).to.eql(true)
+    })
     it('add resources should not contain empty', () => {
       const resource = [1 ,,'   ',  '', 'aaa ']
       const { hasError } = validateAddResource(resource)

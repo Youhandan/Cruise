@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Icon, Input, Button, Popup, Form } from 'semantic-ui-react'
-import { split } from 'lodash'
+import { Icon, Input, Button, Popup, Form, Message } from 'semantic-ui-react'
+import { split, isEmpty } from 'lodash'
+import { validateAddResource } from 'validations/addResourceValidator'
 
 export default class ResourceAddition extends React.Component {
   static propTypes = {
@@ -10,13 +11,21 @@ export default class ResourceAddition extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      isOpenAddResourcePopUp: false
+      isOpenAddResourcePopUp: false,
+      errorMessage: ''
     }
   }
 
   handleAdd = () => {
     const inputValue = this.refs.resources.inputRef.value
     const resources = split(inputValue, ',')
+    const { hasError, message } = validateAddResource(resources)
+    if (hasError) {
+      return this.setState({
+        errorMessage: message
+      })
+    }
+
     this.setState({
       isOpenAddResourcePopUp: false
     })
@@ -26,7 +35,8 @@ export default class ResourceAddition extends React.Component {
 
   handleTogglePopup = () => {
     this.setState({
-      isOpenAddResourcePopUp: !this.state.isOpenAddResourcePopUp
+      isOpenAddResourcePopUp: !this.state.isOpenAddResourcePopUp,
+      errorMessage: ''
     })
   }
 
@@ -50,11 +60,18 @@ export default class ResourceAddition extends React.Component {
   }
 
   renderAddResourcesPopUp() {
+    const error = !isEmpty(this.state.errorMessage)
     return (
-      <Form>
+      <Form error={error}>
         <Form.Field>
           <label>(separate multiple resources name with commas)</label>
           <Input ref='resources'/>
+          <Message
+            hidden={!error}
+            error={error}
+            header='Action Forbidden'
+            content={this.state.errorMessage}
+          />
         </Form.Field>
         <Button positive onClick={this.handleAdd}>Add Resources</Button>
         <Button negative onClick={this.handleTogglePopup}>Cancel</Button>
