@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Icon, List, Label, Input, Button, Popup } from 'semantic-ui-react'
+import { Icon, List, Label, Input, Button, Popup, Form } from 'semantic-ui-react'
 import { map, filter, split } from 'lodash'
+import ResourceAddition from './ResourceAddition'
 
 export default class TaskItemResources extends React.Component {
   static propTypes = {
@@ -23,58 +24,18 @@ export default class TaskItemResources extends React.Component {
     })
   }
 
-  handleAddResource = () => {
-    const inputValue = this.refs.resources.inputRef.value
-    const resources = split(inputValue, ',')
+  handleAddResource = (newResources) => {
     this.setState({
-      resources: [...this.state.resources, ...resources],
-      isOpenAddResourcePopUp: false
-    })
-  }
-
-  handleTogglePopUp = () => {
-    this.setState({
-      isOpenAddResourcePopUp: !this.state.isOpenAddResourcePopUp
+      resources: [...this.state.resources, ...newResources]
     })
   }
 
   render() {
     return (
       <List divided horizontal className='item-resource'>
-        <List.Item>{this.renderAddResource()}</List.Item>
+        <List.Item><ResourceAddition onAdd={this.handleAddResource}/></List.Item>
         <List.Item>{this.renderResourceItems()}</List.Item>
       </List>
-    )
-  }
-
-  renderAddResource() {
-    return (
-      <span>
-        <Icon name='plus'/>
-        <Popup
-          open={this.state.isOpenAddResourcePopUp}
-          onClose={this.handleTogglePopUp}
-          onOpen={this.handleTogglePopUp}
-          wide='very'
-          position='bottom center'
-          trigger={<a>Specify Resources</a>}
-          content={this.renderAddResourcesPopUp()}
-          on='click'
-        />
-      </span>
-    )
-  }
-
-  renderAddResourcesPopUp() {
-    return (
-      <div>
-        <p>(separate multiple resources name with commas)</p>
-        <Input fluid ref='resources'/>
-        <span>
-          <Button positive onClick={this.handleAddResource}>Add Resources</Button>
-          <Button negative onClick={this.handleTogglePopUp}>Cancel</Button>
-        </span>
-      </div>
     )
   }
 
@@ -89,7 +50,7 @@ export default class TaskItemResources extends React.Component {
       />
     ))
     return (
-      <span>Resources：{resources}</span>
+      <div>Resources：{resources}</div>
     )
   }
 }
