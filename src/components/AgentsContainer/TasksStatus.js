@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Header, List, Grid } from 'semantic-ui-react'
-import { partition, size, map, groupBy } from 'lodash'
+import { size, map, groupBy } from 'lodash'
 
 const items = new Array(10).fill('bjstdmngbgr02/Acceptance_test')
 
