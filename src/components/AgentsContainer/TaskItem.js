@@ -21,8 +21,10 @@ export default class TaskItem extends React.Component {
           <Icon size='huge' name='circle' className='item-icon'/>
           <Item.Content className='item-content'>
             <Item.Header as='h4' className='item-header'>
-              {name}
-              {this.renderInfo()}
+              <List horizontal>
+                <List.Item>{name}</List.Item>
+                <List.Item>{this.renderInfo()}</List.Item>
+              </List>
             </Item.Header>
             <Item.Description>
               <TaskItemResources resources={resources}/>
@@ -41,7 +43,6 @@ export default class TaskItem extends React.Component {
       <List
         divided
         horizontal
-        className='item-info'
         items={items}
       />
     )
