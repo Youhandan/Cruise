@@ -6,7 +6,7 @@ import TaskItem from './TaskItem'
 
 export default class TasksList extends React.Component {
   static propTypes = {
-    tasks: PropTypes.array.isRequired
+    agents: PropTypes.array.isRequired
   }
 
   constructor(props) {
@@ -14,9 +14,9 @@ export default class TasksList extends React.Component {
   }
 
   render() {
-    const taskItems = map(this.props.tasks, (task, index) => <TaskItem key={index} task={task}/>)
+    const agentItems = map(this.props.agents, (agent, index) => <TaskItem key={index} agent={agent}/>)
     return (
-      <Item.Group>{taskItems}</Item.Group>
+      <Item.Group>{agentItems}</Item.Group>
     )
   }
 }

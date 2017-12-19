@@ -6,14 +6,14 @@ import './TaskItem.less'
 
 export default class TaskItem extends React.Component {
   static propTypes = {
-    task: PropTypes.object.isRequired,
+    agent: PropTypes.object.isRequired,
   }
   constructor(props) {
     super(props)
   }
 
   render() {
-    const { name, status, resources } = this.props.task
+    const { name, status, resources } = this.props.agent
     const itemColor = status === 'idle' ? 'green' : 'yellow'
     return (
       <Item>
@@ -37,7 +37,7 @@ export default class TaskItem extends React.Component {
   }
 
   renderInfo() {
-    const { status, ip, sandbox } = this.props.task
+    const { status, ip, sandbox } = this.props.agent
     const items = [status.valueOf(), ip.valueOf(), sandbox.valueOf()]
     return (
       <List

@@ -17,7 +17,7 @@ export default class TasksStatus extends React.Component {
   render() {
     const taskHistoryListItems = map(items, (item, key) => <List.Item key={key}>{item}</List.Item>)
     const tasksStatusCategories = groupBy(this.props.tasksStatus, 'status')
-    const taskStatusListItems = map(tasksStatusCategories, (tasks, key) => {
+    const taskStatusListItems = map(tasksStatusCategories, (agents, key) => {
       return (
         <List.Item key={key}>
           <Grid columns={2}>
@@ -25,7 +25,7 @@ export default class TasksStatus extends React.Component {
               {key}
             </Grid.Column>
             <Grid.Column>
-              {size(tasks)}
+              {size(agents)}
             </Grid.Column>
           </Grid>
         </List.Item>

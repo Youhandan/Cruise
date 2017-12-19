@@ -12,7 +12,7 @@ export default class AgentsContainer extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      tasks: mockData,
+      agents: mockData,
       machineFilter: ALL
     }
   }
@@ -54,14 +54,14 @@ export default class AgentsContainer extends React.Component {
   }
 
   renderContent() {
-    const { tasks, machineFilter} = this.state
-    const visibleTasks = this.state.machineFilter === ALL ? tasks : filter(tasks, {machine: machineFilter})
+    const { agents, machineFilter} = this.state
+    const visibleTasks = this.state.machineFilter === ALL ? agents : filter(agents, {machine: machineFilter})
     const tasksStatus = map(visibleTasks, (item) => ({status: item.status, name: item.name}))
     return (
       <Segment attached>
         <Grid divided stackable>
           <Grid.Column width={12}>
-            <TasksList tasks={visibleTasks}/>
+            <TasksList agents={visibleTasks}/>
           </Grid.Column>
           <Grid.Column width={4}>
             <TasksStatus tasksStatus={tasksStatus}/>
