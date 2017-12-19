@@ -6,7 +6,7 @@ const path =require('path')
 
 const config = {
     entry:{
-        index: __dirname + '/src/index.js',
+        index: [__dirname + '/src/index.js', "webpack-dev-server/client?http://localhost:8080", "webpack/hot/only-dev-server"],
         vendor: ['react', 'react-dom', 'lodash', 'semantic-ui-react']
     } ,
     output: {

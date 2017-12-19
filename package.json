@@ -7,7 +7,7 @@
     "test": "NODE_PATH=./src NODE_ENV=test mocha --require babel-core/register",
     "test:watch": "npm run test -- --watch",
     "build": "webpack",
-    "dev": "webpack-dev-server --open",
+    "dev": "webpack-dev-server --host 0.0.0.0 --port 8080",
     "lint": "eslint src"
   },
   "author": "",
