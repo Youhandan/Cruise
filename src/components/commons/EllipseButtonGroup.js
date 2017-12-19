@@ -3,16 +3,18 @@ import PropTypes from 'prop-types'
 import { map } from 'lodash'
 import { Button } from 'semantic-ui-react'
 
-export const EllipseButtonGroup = ({buttons}) => {
-  const buttonItems = map(buttons, (button, index) => {
+export const EllipseButtonGroup = ({buttonNames, onClick, activeButtonName}) => {
+  const buttonItems = map(buttonNames, (buttonName, index) => {
     return (
       <Button
         key={index}
         inverted
         color='grey'
         style={{marginRight: '2rem', borderRadius: '2rem'}}
+        onClick={onClick(buttonName)}
+        active={activeButtonName === buttonName}
       >
-        {button}
+        {buttonName}
       </Button>
     )
   })
@@ -26,5 +28,7 @@ export const EllipseButtonGroup = ({buttons}) => {
 }
 
 EllipseButtonGroup.propTypes = {
-  buttons: PropTypes.array.isRequired
+  buttonNames: PropTypes.array.isRequired,
+  onClick: PropTypes.func.isRequired,
+  activeButtonName: PropTypes.string.isRequired,
 }
