@@ -1,6 +1,7 @@
 import React from 'react'
 import { Segment, Header, Container, Grid } from 'semantic-ui-react'
-import { map, filter } from 'lodash'
+import { map, filter, findIndex } from 'lodash'
+import dotProp from 'dot-prop-immutable'
 import AgentsList from './AgentsList'
 import AgentsStatus from './AgentsStatus'
 import {EllipseButtonGroup} from 'components/commons/EllipseButtonGroup'
@@ -23,6 +24,14 @@ export default class AgentsContainer extends React.Component {
         machineFilter: filterName
       })
     }
+  }
+
+  handleUpdateAgentResource = (agentName, resources) => {
+    const updateAgentIndex = findIndex(this.state.agents, {name: agentName})
+    const newAgents = dotProp.set(this.state.agents, `${updateAgentIndex}.resources`, resources)
+    this.setState({
+      agents: newAgents
+    })
   }
 
   render() {
@@ -61,7 +70,7 @@ export default class AgentsContainer extends React.Component {
       <Segment attached>
         <Grid divided stackable>
           <Grid.Column width={12}>
-            <AgentsList agents={visibleAgents}/>
+            <AgentsList agents={visibleAgents} onUpdateAgentResourcesByName={this.handleUpdateAgentResource}/>
           </Grid.Column>
           <Grid.Column width={4}>
             <AgentsStatus agentsStatus={agentsStatus}/>

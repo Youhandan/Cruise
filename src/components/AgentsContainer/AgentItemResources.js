@@ -7,27 +7,23 @@ import ResourceAddition from './ResourceAddition'
 export default class AgentItemResources extends React.Component {
   static propTypes = {
     resources: PropTypes.array.isRequired,
+    onUpdateResources: PropTypes.func.isRequired
   }
   constructor(props) {
     super(props)
     this.state = {
-      resources: props.resources,
       isOpenAddResourcePopUp: false
     }
   }
 
   handleRemoveResource = (e, data) => {
     const { content } = data
-    const remainResource = filter(this.state.resources, (resource) => resource !== content)
-    this.setState({
-      resources: remainResource
-    })
+    const remainResource = filter(this.props.resources, (resource) => resource !== content)
+    this.props.onUpdateResources(remainResource)
   }
 
   handleAddResource = (newResources) => {
-    this.setState({
-      resources: [...this.state.resources, ...newResources]
-    })
+    this.props.onUpdateResources([...this.props.resources, ...newResources])
   }
 
   render() {
@@ -40,7 +36,7 @@ export default class AgentItemResources extends React.Component {
   }
 
   renderResourceItems() {
-    const resources = map(this.state.resources, (resource, index) => (
+    const resources = map(this.props.resources, (resource, index) => (
       <Label
         key={index}
         content={resource}

@@ -8,9 +8,14 @@ import './AgentItem.less'
 export default class AgentItem extends React.Component {
   static propTypes = {
     agent: PropTypes.object.isRequired,
+    onUpdateAgentResourcesByName: PropTypes.func.isRequired
   }
   constructor(props) {
     super(props)
+  }
+
+  handleUpdateItemResources = (newResource) => {
+    this.props.onUpdateAgentResourcesByName(this.props.agent.name, newResource)
   }
 
   render() {
@@ -27,7 +32,7 @@ export default class AgentItem extends React.Component {
               </List>
             </Item.Header>
             <Item.Description>
-              <AgentItemResources resources={resources}/>
+              <AgentItemResources resources={resources} onUpdateResources={this.handleUpdateItemResources}/>
             </Item.Description>
           </Item.Content>
           {status === IDLE && this.renderDeny()}
