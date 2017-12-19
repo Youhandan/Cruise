@@ -37,8 +37,8 @@ export default class TaskItem extends React.Component {
   }
 
   renderInfo() {
-    const { status, ip, path } = this.props.task
-    const items = [status.valueOf(), ip.valueOf(), path.valueOf()]
+    const { status, ip, sandbox } = this.props.task
+    const items = [status.valueOf(), ip.valueOf(), sandbox.valueOf()]
     return (
       <List
         divided
