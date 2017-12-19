@@ -28,7 +28,8 @@ const config = {
     modules: ["node_modules"],
     alias: {
       components: path.resolve(__dirname, 'src/components/'),
-      validations: path.resolve(__dirname, 'src/validations/')
+      validations: path.resolve(__dirname, 'src/validations/'),
+      constants: path.resolve(__dirname, 'src/constants/')
     },
     extensions: ["*", ".js"]
   },

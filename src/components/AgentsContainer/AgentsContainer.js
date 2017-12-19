@@ -4,51 +4,16 @@ import { map, filter } from 'lodash'
 import TasksList from './TasksList'
 import TasksStatus from './TasksStatus'
 import {EllipseButtonGroup} from 'components/commons/EllipseButtonGroup'
+import { mockData, ALL, PHYSICAL, VIRTUAL } from 'constants/AgentsConstants'
 import './AgentsContainer.less'
-
-const data = [
-    {
-      name: 'bjstdmngbgr02.thoughtworks.com',
-      status: 'idle',
-      ip: '192.168.1.2',
-      sandbox: 'var/lib/cruise-agent',
-      machine: 'Physical',
-      resources: ['ubuntu', 'firefox3', 'core-duo']
-    },
-    {
-      name: 'bjstdmngbgr03.thoughtworks.com',
-      status: 'building',
-      ip: '192.168.1.3',
-      sandbox: 'var/lib/cruise-agent',
-      machine: 'Physical',
-      resources: ['ubuntu', 'firefox3', 'mysql', 'core-duo']
-    },
-    {
-      name: 'bjstdmngbgr04.thoughtworks.com',
-      status: 'building',
-      ip: '192.168.1.4',
-      sandbox: 'var/lib/cruise-agent',
-      machine: 'Physical',
-      resources: ['ubuntu', 'firefox3', 'mysql', 'core-duo']
-    },
-    {
-      name: 'bjstdmngbgr05.thoughtworks.com',
-      status: 'idle',
-      ip: '192.168.1.5',
-      sandbox: 'var/lib/cruise-agent',
-      machine: 'Physical',
-      resources: ['ubuntu']
-    },
-
-]
 
 export default class AgentsContainer extends React.Component {
 
   constructor(props) {
     super(props)
     this.state = {
-      tasks: data,
-      machineFilter: 'All'
+      tasks: mockData,
+      machineFilter: ALL
     }
   }
 
@@ -78,7 +43,7 @@ export default class AgentsContainer extends React.Component {
           </Grid.Column>
           <Grid.Column width={10}>
             <EllipseButtonGroup
-              buttonNames={['All', 'Physical', 'Virtual']}
+              buttonNames={[ALL, PHYSICAL, VIRTUAL]}
               onClick={this.handleFilterMachine}
               activeButtonName={this.state.machineFilter}
             />
@@ -90,7 +55,7 @@ export default class AgentsContainer extends React.Component {
 
   renderContent() {
     const { tasks, machineFilter} = this.state
-    const visibleTasks = this.state.machineFilter === 'All' ? tasks : filter(tasks, {machine: machineFilter})
+    const visibleTasks = this.state.machineFilter === ALL ? tasks : filter(tasks, {machine: machineFilter})
     const tasksStatus = map(visibleTasks, (item) => ({status: item.status, name: item.name}))
     return (
       <Segment attached>
