@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Segment, Item, Icon, List } from 'semantic-ui-react'
 import AgentItemResources from './AgentItemResources'
+import { statusColor, IDLE } from 'constants/AgentsConstants'
 import './AgentItem.less'
 
 export default class AgentItem extends React.Component {
@@ -14,10 +15,9 @@ export default class AgentItem extends React.Component {
 
   render() {
     const { name, status, resources } = this.props.agent
-    const itemColor = status === 'idle' ? 'green' : 'yellow'
     return (
       <Item>
-        <Segment inverted color={itemColor} className='item-segment'>
+        <Segment inverted color={statusColor[status]} className='item-segment'>
           <Icon size='huge' name='circle' className='item-icon'/>
           <Item.Content className='item-content'>
             <Item.Header as='h4' className='item-header'>
@@ -30,7 +30,7 @@ export default class AgentItem extends React.Component {
               <AgentItemResources resources={resources}/>
             </Item.Description>
           </Item.Content>
-          {status === 'idle' && this.renderDeny()}
+          {status === IDLE && this.renderDeny()}
         </Segment>
       </Item>
     )
