@@ -2,8 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Header, List, Grid } from 'semantic-ui-react'
 import { size, map, groupBy } from 'lodash'
-
-const items = new Array(10).fill('bjstdmngbgr02/Acceptance_test')
+import { histories } from 'constants/mockData'
 
 export default class AgentsStatus extends React.Component {
   static propTypes = {
@@ -15,7 +14,7 @@ export default class AgentsStatus extends React.Component {
   }
 
   render() {
-    const agentHistoryListItems = map(items, (item, key) => <List.Item key={key}>{item}</List.Item>)
+    const agentHistoryListItems = map(histories, (item, key) => <List.Item key={key}>{item}</List.Item>)
     const agentsStatusCategories = groupBy(this.props.agentsStatus, 'status')
     const agentStatusListItems = map(agentsStatusCategories, (agents, key) => {
       return (

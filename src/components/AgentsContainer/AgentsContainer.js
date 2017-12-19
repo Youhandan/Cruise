@@ -5,7 +5,8 @@ import dotProp from 'dot-prop-immutable'
 import AgentsList from './AgentsList'
 import AgentsStatus from './AgentsStatus'
 import {EllipseButtonGroup} from 'components/commons/EllipseButtonGroup'
-import { mockData, ALL, PHYSICAL, VIRTUAL } from 'constants/AgentsConstants'
+import { ALL, PHYSICAL, VIRTUAL } from 'constants/AgentsConstants'
+import { mockData } from 'constants/mockData'
 import './AgentsContainer.less'
 
 export default class AgentsContainer extends React.Component {
@@ -26,8 +27,8 @@ export default class AgentsContainer extends React.Component {
     }
   }
 
-  handleUpdateAgentResource = (agentName, resources) => {
-    const updateAgentIndex = findIndex(this.state.agents, {name: agentName})
+  handleUpdateAgentResource = (id, resources) => {
+    const updateAgentIndex = findIndex(this.state.agents, {id: id})
     const newAgents = dotProp.set(this.state.agents, `${updateAgentIndex}.resources`, resources)
     this.setState({
       agents: newAgents
@@ -65,12 +66,12 @@ export default class AgentsContainer extends React.Component {
   renderContent() {
     const { agents, machineFilter} = this.state
     const visibleAgents = this.state.machineFilter === ALL ? agents : filter(agents, {machine: machineFilter})
-    const agentsStatus = map(visibleAgents, (item) => ({status: item.status, name: item.name}))
+    const agentsStatus = map(visibleAgents, (item) => ({status: item.status, id: item.id}))
     return (
       <Segment attached>
         <Grid divided stackable>
           <Grid.Column width={12}>
-            <AgentsList agents={visibleAgents} onUpdateAgentResourcesByName={this.handleUpdateAgentResource}/>
+            <AgentsList agents={visibleAgents} onUpdateAgentResourcesById={this.handleUpdateAgentResource}/>
           </Grid.Column>
           <Grid.Column width={4}>
             <AgentsStatus agentsStatus={agentsStatus}/>

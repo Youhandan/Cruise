@@ -7,7 +7,7 @@ import AgentItem from './AgentItem'
 export default class AgentsList extends React.Component {
   static propTypes = {
     agents: PropTypes.array.isRequired,
-    onUpdateAgentResourcesByName: PropTypes.func.isRequired
+    onUpdateAgentResourcesById: PropTypes.func.isRequired
   }
 
   constructor(props) {
@@ -15,11 +15,11 @@ export default class AgentsList extends React.Component {
   }
 
   render() {
-    const agentItems = map(this.props.agents, (agent, index) => (
+    const agentItems = map(this.props.agents, (agent) => (
       <AgentItem
-        key={index}
+        key={agent.id}
         agent={agent}
-        onUpdateAgentResourcesByName={this.props.onUpdateAgentResourcesByName}
+        onUpdateAgentResourcesById={this.props.onUpdateAgentResourcesById}
       />
     ))
     return (

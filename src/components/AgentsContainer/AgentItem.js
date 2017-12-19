@@ -8,14 +8,14 @@ import './AgentItem.less'
 export default class AgentItem extends React.Component {
   static propTypes = {
     agent: PropTypes.object.isRequired,
-    onUpdateAgentResourcesByName: PropTypes.func.isRequired
+    onUpdateAgentResourcesById: PropTypes.func.isRequired
   }
   constructor(props) {
     super(props)
   }
 
   handleUpdateItemResources = (newResource) => {
-    this.props.onUpdateAgentResourcesByName(this.props.agent.name, newResource)
+    this.props.onUpdateAgentResourcesById(this.props.agent.id, newResource)
   }
 
   render() {
