@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Segment, Item, Icon, List } from 'semantic-ui-react'
-import TaskItemResources from './TaskItemResources'
-import './TaskItem.less'
+import AgentItemResources from './AgentItemResources'
+import './AgentItem.less'
 
-export default class TaskItem extends React.Component {
+export default class AgentItem extends React.Component {
   static propTypes = {
     agent: PropTypes.object.isRequired,
   }
@@ -27,7 +27,7 @@ export default class TaskItem extends React.Component {
               </List>
             </Item.Header>
             <Item.Description>
-              <TaskItemResources resources={resources}/>
+              <AgentItemResources resources={resources}/>
             </Item.Description>
           </Item.Content>
           {status === 'idle' && this.renderDeny()}

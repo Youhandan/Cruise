@@ -5,9 +5,9 @@ import { size, map, groupBy } from 'lodash'
 
 const items = new Array(10).fill('bjstdmngbgr02/Acceptance_test')
 
-export default class TasksStatus extends React.Component {
+export default class AgentsStatus extends React.Component {
   static propTypes = {
-    tasksStatus: PropTypes.array.isRequired
+    agentsStatus: PropTypes.array.isRequired
   }
 
   constructor(props) {
@@ -15,9 +15,9 @@ export default class TasksStatus extends React.Component {
   }
 
   render() {
-    const taskHistoryListItems = map(items, (item, key) => <List.Item key={key}>{item}</List.Item>)
-    const tasksStatusCategories = groupBy(this.props.tasksStatus, 'status')
-    const taskStatusListItems = map(tasksStatusCategories, (agents, key) => {
+    const agentHistoryListItems = map(items, (item, key) => <List.Item key={key}>{item}</List.Item>)
+    const agentsStatusCategories = groupBy(this.props.agentsStatus, 'status')
+    const agentStatusListItems = map(agentsStatusCategories, (agents, key) => {
       return (
         <List.Item key={key}>
           <Grid columns={2}>
@@ -34,9 +34,9 @@ export default class TasksStatus extends React.Component {
     return (
       <div>
         <Header as='h3' dividing >Summary</Header>
-        <List verticalAlign='middle' relaxed>{taskStatusListItems}</List>
+        <List verticalAlign='middle' relaxed>{agentStatusListItems}</List>
         <Header as='h3' dividing>History</Header>
-        <List verticalAlign='middle' relaxed>{taskHistoryListItems}</List>
+        <List verticalAlign='middle' relaxed>{agentHistoryListItems}</List>
       </div>
     )
   }

@@ -1,8 +1,8 @@
 import React from 'react'
 import { Segment, Header, Container, Grid } from 'semantic-ui-react'
 import { map, filter } from 'lodash'
-import TasksList from './TasksList'
-import TasksStatus from './TasksStatus'
+import AgentsList from './AgentsList'
+import AgentsStatus from './AgentsStatus'
 import {EllipseButtonGroup} from 'components/commons/EllipseButtonGroup'
 import { mockData, ALL, PHYSICAL, VIRTUAL } from 'constants/AgentsConstants'
 import './AgentsContainer.less'
@@ -55,16 +55,16 @@ export default class AgentsContainer extends React.Component {
 
   renderContent() {
     const { agents, machineFilter} = this.state
-    const visibleTasks = this.state.machineFilter === ALL ? agents : filter(agents, {machine: machineFilter})
-    const tasksStatus = map(visibleTasks, (item) => ({status: item.status, name: item.name}))
+    const visibleAgents = this.state.machineFilter === ALL ? agents : filter(agents, {machine: machineFilter})
+    const agentsStatus = map(visibleAgents, (item) => ({status: item.status, name: item.name}))
     return (
       <Segment attached>
         <Grid divided stackable>
           <Grid.Column width={12}>
-            <TasksList agents={visibleTasks}/>
+            <AgentsList agents={visibleAgents}/>
           </Grid.Column>
           <Grid.Column width={4}>
-            <TasksStatus tasksStatus={tasksStatus}/>
+            <AgentsStatus agentsStatus={agentsStatus}/>
           </Grid.Column>
         </Grid>
       </Segment>

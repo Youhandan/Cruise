@@ -2,9 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Item } from 'semantic-ui-react'
 import { map } from 'lodash'
-import TaskItem from './TaskItem'
+import AgentItem from './AgentItem'
 
-export default class TasksList extends React.Component {
+export default class AgentsList extends React.Component {
   static propTypes = {
     agents: PropTypes.array.isRequired
   }
@@ -14,7 +14,7 @@ export default class TasksList extends React.Component {
   }
 
   render() {
-    const agentItems = map(this.props.agents, (agent, index) => <TaskItem key={index} agent={agent}/>)
+    const agentItems = map(this.props.agents, (agent, index) => <AgentItem key={index} agent={agent}/>)
     return (
       <Item.Group>{agentItems}</Item.Group>
     )

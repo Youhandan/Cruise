@@ -4,7 +4,7 @@ import { List, Label } from 'semantic-ui-react'
 import { map, filter } from 'lodash'
 import ResourceAddition from './ResourceAddition'
 
-export default class TaskItemResources extends React.Component {
+export default class AgentItemResources extends React.Component {
   static propTypes = {
     resources: PropTypes.array.isRequired,
   }
